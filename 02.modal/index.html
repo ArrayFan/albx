@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /*
+        js模块化
+        把一些功能 封装起来
+            jQuery 就可以称之为是一个js的模块
+            template 也 可以称之为是一个js的模块
+    */
+    // 自己在封装代码的时候 封到不能封为止 ->模块
+    //    var num1 =1;
+    //    var num2 = 2;
+    //    num1+num2;
+
+    // 函数中
+    // function sum(num1,num2){
+    //     return num1+num2;
+    // }
+
+    // 对象
+    // var obj = {
+    //     money:'1000津巴布韦币',
+    //     sum:function(num1,num2){
+    //         return num1+num2;
+    //     }
+    // };
+
+    // 闭包 延长变量的生命周期 保护某一些变量
+    // function out(){
+    //     // 外层函数内
+    //     var money = '1000津巴布韦币';
+    //     function inner(){
+    //         console.log(money);
+    //     }
+    //     return inner;
+    // }
+    // var inner = out();
+
+
+    var inner = (function () {
+        // 外层函数内
+        var money = '1000津巴布韦币';
+
+        return function () {
+            console.log(money);
+        };
+    }())
+
+    // inner();
+
+    // 沙箱 (自执行函数)
+    // 一个写好的模块  sayHello
+    // 一般 工作时 初期 用别人的模块居多,中后期 自己写模块
+    (function(window){
+        // 声明变量
+        var sayHello ;
+
+        // 为变量赋值
+        sayHello = function(){
+            console.log('感觉自己萌萌哒');
+        }
+
+        // 对外暴露访问的方式
+        window.sayHello = window.SH = sayHello;
+
+    }(window))
+
+</script>
